@@ -1,0 +1,15 @@
+<div>
+    <select [(ngModel)]="selectedSamplingTime">
+      <option *ngFor="let item of data.Datas" [value]="item.SamplingTime">
+        {{ item.SamplingTime }}
+      </option>
+    </select>
+  
+    <div *ngFor="let property of data.Datas.find(item => item.SamplingTime === selectedSamplingTime)?.Properties">
+      <label>{{ property.Label }}:</label>
+      <input [(ngModel)]="property.Value" />
+    </div>
+  
+    <button (click)="onSave()">Save</button>
+  </div>
+  
